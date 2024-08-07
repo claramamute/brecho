@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Categoria } from './categoria/entities/categoria.entity';
 import { CategoriaModule } from './categoria/categoria.module';
+import { ProdutoModule } from './produto/produto.module';
+import { Produto } from './produto/entities/produto.entity';
 
 @Module({
   imports: [
@@ -14,10 +14,11 @@ import { CategoriaModule } from './categoria/categoria.module';
       username: 'root',
       password: 'root',
       database: 'db_brecho',
-      entities: [Categoria],
+      entities: [Categoria, Produto],
       synchronize: true // sincronizar com o banco de dados - tabelas criadas/atualizadas automaticamente
     }),
-    CategoriaModule
+    CategoriaModule,
+    ProdutoModule
   ],
   controllers: [],
   providers: [],
